@@ -1,0 +1,10 @@
+{
+  "name": "eth-amsterdam-submission",
+  "version": "1.0.0",
+  "description": "This is repository for ETHAmsterdam hackathon",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/**"
+  ]
+}
