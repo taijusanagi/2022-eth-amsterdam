@@ -3,9 +3,9 @@
 //
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-import { ethers } from "hardhat";
+import { network, ethers } from "hardhat";
 
-import { ORIGIN_CONTRACT, ORIGIN_DOMAIN } from "../lib/constants";
+import { ORIGIN_DOMAIN_KOVAN, ORIGIN_DOMAIN_RINKEBY } from "../lib/constants";
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -19,13 +19,18 @@ async function main() {
   const PermissionedTarget = await ethers.getContractFactory(
     "PermissionedTarget"
   );
-  const permissionedTarget = await PermissionedTarget.deploy(
-    ORIGIN_CONTRACT,
-    ORIGIN_DOMAIN
-  );
 
+  let originDomain;
+  if (network.name === "rinkeby") {
+    originDomain = ORIGIN_DOMAIN_KOVAN;
+  } else if (network.name === "kovan") {
+    originDomain = ORIGIN_DOMAIN_RINKEBY;
+  } else {
+    return;
+  }
+
+  const permissionedTarget = await PermissionedTarget.deploy(originDomain);
   await permissionedTarget.deployed();
-
   console.log("PermissionedTarget deployed to:", permissionedTarget.address);
 }
 

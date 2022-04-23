@@ -5,7 +5,10 @@
 // Runtime Environment's members available in the global scope.
 import { network, ethers } from "hardhat";
 
-import { CONNEXT_KOVAN, CONNEXT_RINKEBY } from "../lib/constants";
+import {
+  CONNEXT_CONTRACT_KOVAN,
+  CONNEXT_CONTRACT_RINKEBY,
+} from "../lib/constants";
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -18,10 +21,10 @@ async function main() {
   // We get the contract to deploy
 
   let connextAddress = "";
-  if (network.name === "forking-rinkeby") {
-    connextAddress = CONNEXT_RINKEBY;
-  } else if (network.name === "forking-kovan") {
-    connextAddress = CONNEXT_KOVAN;
+  if (network.name === "rinkeby") {
+    connextAddress = CONNEXT_CONTRACT_RINKEBY;
+  } else if (network.name === "kovan") {
+    connextAddress = CONNEXT_CONTRACT_KOVAN;
   } else {
     return;
   }

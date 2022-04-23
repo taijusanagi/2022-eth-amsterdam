@@ -29,11 +29,11 @@ contract XNFTBridge {
             IExecutor(msg.sender).origin() == originDomain,
             "Expected origin domain"
         );
-        require(
-            // source contract
-            IExecutor(msg.sender).originContract() == originContract,
-            "Expected origin domain contract"
-        );
+        // require(
+        //     // source contract
+        //     IExecutor(msg.sender).originSender() == originContract,
+        //     "Expected origin domain contract"
+        // );
         bytes32 salt = keccak256(
             abi.encodePacked(
                 originNFTContractAddress,
@@ -46,7 +46,7 @@ contract XNFTBridge {
             salt,
             keccak256(creationCode)
         );
-        address to = IExecutor(msg.sender).originContract();
+        address to = IExecutor(msg.sender).originSender();
 
         if (!Address.isContract(computedAddress)) {
             Create2.deploy(0, salt, creationCode);
