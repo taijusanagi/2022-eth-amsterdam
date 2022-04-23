@@ -7,5 +7,7 @@ pragma solidity ^0.8.10;
 interface IExecutor {
     function origin() external view returns (uint32);
 
+    function originContract() external view returns (address);
+
     function originSender() external view returns (address);
 }
