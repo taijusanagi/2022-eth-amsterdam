@@ -7,6 +7,8 @@ pragma solidity ^0.8.10;
 import {IConnext} from "./interfaces/IConnext.sol";
 import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
 
+import "hardhat/console.sol";
+
 /**
  * @title XDomainPermissioned
  * @notice Example of a cross-domain permissioned call.

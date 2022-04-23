@@ -26,13 +26,16 @@ async function main() {
   } else if (network.name === "kovan") {
     connextAddress = CONNEXT_CONTRACT_KOVAN;
   } else {
-    return;
+    // return;
   }
   const XDomainPermissioned = await ethers.getContractFactory(
     "XDomainPermissioned"
   );
-  const xDomainPermissioned = await XDomainPermissioned.deploy(connextAddress);
+  const xDomainPermissioned = await XDomainPermissioned.deploy(
+    CONNEXT_CONTRACT_KOVAN
+  );
   await xDomainPermissioned.deployed();
+  console.log(await xDomainPermissioned.code());
 
   console.log("XDomainPermissioned deployed to:", xDomainPermissioned.address);
 }

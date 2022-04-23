@@ -31,6 +31,7 @@ async function main() {
 
   const permissionedTarget = await PermissionedTarget.deploy(originDomain);
   await permissionedTarget.deployed();
+
   console.log("PermissionedTarget deployed to:", permissionedTarget.address);
 }
 

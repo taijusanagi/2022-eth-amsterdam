@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@connext/nxtp-sdk": "^0.2.0-alpha.4",
-    "@openzeppelin/contracts": "^4.5.0"
+    "@openzeppelin/contracts": "^4.5.0",
+    "graphql": "^16.3.0"
   }
 }

@@ -9,6 +9,7 @@ import "solidity-coverage";
 
 import "./tasks/poc-connext-update";
 import "./tasks/poc-connext-check";
+import "./tasks/poc-connext-execute";
 
 dotenv.config();
 

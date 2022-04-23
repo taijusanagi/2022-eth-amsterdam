@@ -18,5 +18,18 @@ interface IConnext {
         uint256 amount;
     }
 
+    struct ExecuteArgs {
+        CallParams params;
+        address local;
+        address[] routers;
+        uint32 feePercentage;
+        uint256 amount;
+        uint256 nonce;
+        bytes relayerSignature;
+        address originSender;
+    }
+
     function xcall(XCallArgs memory xCallArgs) external;
+
+    function execute(ExecuteArgs calldata _args) external returns (bytes32);
 }

@@ -31,6 +31,7 @@ task("poc-connext-update", "poc of cross message update")
     } else {
       return;
     }
+
     const tx = await xDomainPermissioned.update(
       target,
       testERC20,
