@@ -7,6 +7,10 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 
+import "./tasks/poc-connext-update";
+import "./tasks/poc-connext-check";
+import "./tasks/poc-connext-execute";
+
 dotenv.config();
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -22,13 +26,19 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
+const accounts =
+  process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [];
+
 const config: HardhatUserConfig = {
-  solidity: "0.8.4",
+  solidity: "0.8.10",
   networks: {
-    ropsten: {
-      url: process.env.ROPSTEN_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    rinkeby: {
+      url: "https://rinkeby.infura.io/v3/95f65ab099894076814e8526f52c9149",
+      accounts,
+    },
+    kovan: {
+      url: "https://kovan.infura.io/v3/95f65ab099894076814e8526f52c9149",
+      accounts,
     },
   },
   gasReporter: {
