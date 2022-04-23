@@ -31,6 +31,7 @@ contract PermissionedTarget is Ownable {
     }
 
     // Permissioned function
+    // owner = connext contract
     // function updateValue(uint256 newValue) external onlyOwner {
     function updateValue(uint256 newValue) external {
         // Note: This is an important security consideration. If your target
@@ -45,7 +46,7 @@ contract PermissionedTarget is Ownable {
         //     // msg.sender of xcall from the origin domain
         //     IExecutor(msg.sender).originSender() == originContract,
         //     "Expected origin domain contract"
-        // );
+        // // );
 
         value = newValue;
         emit Updated(value);
