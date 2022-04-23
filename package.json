@@ -6,5 +6,19 @@
   "private": true,
   "workspaces": [
     "packages/**"
-  ]
+  ],
+  "scripts": {
+    "test": "run-p test:*",
+    "test:contracts": "yarn workspace contracts test",
+    "build": "run-p build:*",
+    "build:contracts": "yarn workspace contracts build",
+    "build:frontend": "yarn workspace frontend build",
+    "fix": "run-p fix:*",
+    "fix:contracts": "yarn workspace contracts fix",
+    "fix:frontend": "yarn workspace frontend fix"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "ts-node": "^10.7.0"
+  }
 }

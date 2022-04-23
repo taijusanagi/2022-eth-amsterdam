@@ -25,3 +25,22 @@ To make a log of ideas during this hackathon.
 - Tomorrow to do
   - I make a basic working example of the NFT bridge and get feedback from the Connext team
   - I think I need to discuss more on the use case, so I talk with their business member
+
+# 2022-Apr-24
+
+### What I implement
+
+- NFT MARKET PLACE with Tarum
+- It has the function of a bridge powered by Connext
+
+### How I implement
+
+- implement Connext beidge
+- Implement marketplace
+- Implement optimistic, Boba bridge
+
+### Why I Implement
+
+- NFT is everywhere! But most of them does not support bridge function natively
+- If the user wants, the user can easily make NFT "omnichain"
+- The bridge may have the security risk so user can choose which one user preffer
