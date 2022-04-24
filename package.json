@@ -10,6 +10,8 @@
   "scripts": {
     "test": "run-p test:*",
     "test:contracts": "yarn workspace contracts test",
+    "dev": "run-p dev:*",
+    "dev:frontend": "yarn workspace frontend dev",
     "build": "run-p build:*",
     "build:contracts": "yarn workspace contracts build",
     "build:frontend": "yarn workspace frontend build",
