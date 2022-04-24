@@ -5,6 +5,7 @@ const {
 const {
   CONNEXT_CONTRACT_RINKEBY,
   CONNEXT_CONTRACT_KOVAN,
+  NULL_ADDRESS,
 } = require("../../lib/constants");
 
 task("poc-connext-execute", "poc of cross message update")
@@ -31,7 +32,7 @@ task("poc-connext-execute", "poc of cross message update")
     );
 
     const transferId =
-      "0xaf20507b978bcc38fc95f0fdd5ec973bf18e5f8723545530f19715f6dd515e1c";
+      "0xad493a95c38ed91567153d0d17db07cae65bcb3d8565593bc33504168646f991";
 
     const feePercentage = 0;
 
@@ -41,7 +42,7 @@ task("poc-connext-execute", "poc of cross message update")
       signer
     );
     const callParams = {
-      to: "0x4cFd94c68C47715D1d6f988bC3C99cF1C572e8A0",
+      to: "0xEa91c2a5b80536a51A5d3b2449ac7c56906E9281",
       callData:
         "0x573c0bd30000000000000000000000000000000000000000000000000000000000000005",
       originDomain: "2221",
@@ -50,14 +51,15 @@ task("poc-connext-execute", "poc of cross message update")
     const executeArgs = {
       params: callParams,
       local: "0xB7b1d3cC52E658922b2aF00c5729001ceA98142C",
-      routers: ["0x9Ed231481DDf3BC96C0e063E5EF607ACe578CF31"],
+      routers: [signer.address],
       feePercentage,
       amount: 0,
       nonce: 34,
-      relayerSignature,
+      relayerSignature: relayerSignature,
       originSender: signer.address,
     };
-    await connext.execute(executeArgs, {
+    const tx = await connext.execute(executeArgs, {
       gasLimit: "3000000",
     });
+    console.log(tx.hash);
   });
