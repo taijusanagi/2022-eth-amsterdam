@@ -2,7 +2,7 @@
   "name": "eth-amsterdam-submission",
   "version": "1.0.0",
   "description": "This is repository for ETHAmsterdam hackathon",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "private": true,
   "workspaces": [
     "packages/**"

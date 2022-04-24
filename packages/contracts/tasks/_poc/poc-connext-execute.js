@@ -5,7 +5,7 @@ const {
 const {
   CONNEXT_CONTRACT_RINKEBY,
   CONNEXT_CONTRACT_KOVAN,
-} = require("../lib/constants");
+} = require("../../lib/constants");
 
 task("poc-connext-execute", "poc of cross message update")
   // .addParam("caller", "caller contract address")

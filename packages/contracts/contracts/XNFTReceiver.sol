@@ -6,8 +6,8 @@ import {IERC721} from "@openzeppelin/contracts/interfaces/IERC721.sol";
 import {Address} from "@openzeppelin/contracts/utils/Address.sol";
 import {Create2} from "@openzeppelin/contracts/utils/Create2.sol";
 
-import {IExecutor} from "../poc-connext/interfaces/IExecutor.sol";
-import {IConnext} from "../poc-connext/interfaces/IConnext.sol";
+import {IExecutor} from "./_poc/interfaces/IExecutor.sol";
+import {IConnext} from "./_poc/interfaces/IConnext.sol";
 
 import {IXNFT} from "./interfaces/IXNFT.sol";
 import {XNFT} from "./XNFT.sol";

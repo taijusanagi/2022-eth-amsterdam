@@ -6,6 +6,8 @@
 import { network, ethers } from "hardhat";
 
 import {
+  ORIGIN_DOMAIN_KOVAN,
+  ORIGIN_DOMAIN_RINKEBY,
   CONNEXT_CONTRACT_KOVAN,
   CONNEXT_CONTRACT_RINKEBY,
 } from "../lib/constants";
@@ -19,25 +21,22 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
+  const XNFTReceiver = await ethers.getContractFactory("XNFTReceiver");
 
-  let connextAddress = "";
+  let sourceDomain;
+  let connext = "";
   if (network.name === "rinkeby") {
-    connextAddress = CONNEXT_CONTRACT_RINKEBY;
+    sourceDomain = ORIGIN_DOMAIN_KOVAN;
+    connext = CONNEXT_CONTRACT_RINKEBY;
   } else if (network.name === "kovan") {
-    connextAddress = CONNEXT_CONTRACT_KOVAN;
+    sourceDomain = ORIGIN_DOMAIN_RINKEBY;
+    connext = CONNEXT_CONTRACT_KOVAN;
   } else {
-    // return;
+    return;
   }
-  const XDomainPermissioned = await ethers.getContractFactory(
-    "XDomainPermissioned"
-  );
-  const xDomainPermissioned = await XDomainPermissioned.deploy(
-    CONNEXT_CONTRACT_KOVAN
-  );
-  await xDomainPermissioned.deployed();
-  console.log(await xDomainPermissioned.code());
-
-  console.log("XDomainPermissioned deployed to:", xDomainPermissioned.address);
+  const xNFTReceiver = await XNFTReceiver.deploy(sourceDomain, connext);
+  await xNFTReceiver.deployed();
+  console.log("XNFTReceiver deployed to:", xNFTReceiver.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
