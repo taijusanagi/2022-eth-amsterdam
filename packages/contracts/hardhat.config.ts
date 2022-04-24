@@ -12,6 +12,7 @@ import "./tasks/_poc/poc-connext-check";
 import "./tasks/_poc/poc-connext-execute";
 
 import "./tasks/send";
+import "./tasks/execute";
 
 dotenv.config();
 
