@@ -49,7 +49,7 @@ contract XNFTSender {
             address(this),
             tokenId
         );
-        bytes4 selector = bytes4(keccak256("receive(address,uint256)"));
+        bytes4 selector = bytes4(keccak256("execute(address,uint256)"));
         bytes memory callData = abi.encodeWithSelector(
             selector,
             nftContractAddress,
