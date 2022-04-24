@@ -5,7 +5,10 @@
 // Runtime Environment's members available in the global scope.
 import { network, ethers } from "hardhat";
 
-import { ORIGIN_DOMAIN_KOVAN, ORIGIN_DOMAIN_RINKEBY } from "../lib/constants";
+import {
+  ORIGIN_DOMAIN_KOVAN,
+  ORIGIN_DOMAIN_RINKEBY,
+} from "../../lib/constants";
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command

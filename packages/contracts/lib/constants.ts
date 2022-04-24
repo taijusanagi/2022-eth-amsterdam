@@ -11,3 +11,6 @@ export const ERC20_CONTRACT_RINKEBY =
 
 export const ORIGIN_DOMAIN_RINKEBY = 1111;
 export const ORIGIN_DOMAIN_KOVAN = 2221;
+
+export const RINKEBY_SOURCE_NFT_CONTRACT =
+  "0x48e83aba3c07c4fc776c32d0cadc628a1d625ef6";

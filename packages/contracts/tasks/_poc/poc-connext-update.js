@@ -3,7 +3,7 @@ const {
   ORIGIN_DOMAIN_KOVAN,
   ERC20_CONTRACT_KOVAN,
   ERC20_CONTRACT_RINKEBY,
-} = require("../lib/constants");
+} = require("../../lib/constants");
 
 task("poc-connext-update", "poc of cross message update")
   .addParam("caller", "caller contract address")

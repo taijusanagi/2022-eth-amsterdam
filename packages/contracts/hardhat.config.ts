@@ -7,9 +7,11 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 
-import "./tasks/poc-connext-update";
-import "./tasks/poc-connext-check";
-import "./tasks/poc-connext-execute";
+import "./tasks/_poc/poc-connext-update";
+import "./tasks/_poc/poc-connext-check";
+import "./tasks/_poc/poc-connext-execute";
+
+import "./tasks/send";
 
 dotenv.config();
 

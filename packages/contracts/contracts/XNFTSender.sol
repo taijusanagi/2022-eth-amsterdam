@@ -6,8 +6,8 @@ import {IERC721} from "@openzeppelin/contracts/interfaces/IERC721.sol";
 import {Address} from "@openzeppelin/contracts/utils/Address.sol";
 import {Create2} from "@openzeppelin/contracts/utils/Create2.sol";
 
-import {IExecutor} from "../poc-connext/interfaces/IExecutor.sol";
-import {IConnext} from "../poc-connext/interfaces/IConnext.sol";
+import {IExecutor} from "./_poc/interfaces/IExecutor.sol";
+import {IConnext} from "./_poc/interfaces/IConnext.sol";
 
 import {IXNFT} from "./interfaces/IXNFT.sol";
 import {XNFT} from "./XNFT.sol";
@@ -21,9 +21,6 @@ contract XNFTSender {
     // The destination domain ID
     uint32 public destinationDomain;
 
-    // The destination receiver address
-    address public destinationReceiverAddress;
-
     // This is required due to current connext implementation
     address public transactingAssetId;
 
@@ -33,18 +30,20 @@ contract XNFTSender {
     constructor(
         uint32 _ownDomain,
         uint32 _destinationDomain,
-        address _destinationReceiverAddress,
         address _transactingAssetId,
         address _connext
     ) {
         ownDomain = _ownDomain;
         destinationDomain = _destinationDomain;
-        destinationReceiverAddress = _destinationReceiverAddress;
         transactingAssetId = _transactingAssetId;
         connext = _connext;
     }
 
-    function execute(address nftContractAddress, uint256 tokenId) public {
+    function execute(
+        address destinationReceiverAddress,
+        address nftContractAddress,
+        uint256 tokenId
+    ) public {
         IERC721(nftContractAddress).transferFrom(
             msg.sender,
             address(this),
