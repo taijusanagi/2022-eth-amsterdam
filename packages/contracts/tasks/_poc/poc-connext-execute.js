@@ -5,6 +5,7 @@ const {
 const {
   CONNEXT_CONTRACT_RINKEBY,
   CONNEXT_CONTRACT_KOVAN,
+  NULL_ADDRESS,
 } = require("../../lib/constants");
 
 task("poc-connext-execute", "poc of cross message update")
@@ -50,14 +51,15 @@ task("poc-connext-execute", "poc of cross message update")
     const executeArgs = {
       params: callParams,
       local: "0xB7b1d3cC52E658922b2aF00c5729001ceA98142C",
-      routers: ["0x9Ed231481DDf3BC96C0e063E5EF607ACe578CF31"],
+      routers: [signer.address],
       feePercentage,
       amount: 0,
       nonce: 34,
-      relayerSignature,
+      relayerSignature: relayerSignature,
       originSender: signer.address,
     };
-    await connext.execute(executeArgs, {
+    const tx = await connext.execute(executeArgs, {
       gasLimit: "3000000",
     });
+    console.log(tx.hash);
   });
